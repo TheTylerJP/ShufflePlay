@@ -154,12 +154,13 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
                 self.pageControl.isEnabled = true
                 self.pageControl.isHidden = false
             })
-        } else {
-            UIView.animate(withDuration: 0.6, animations: {
-                self.pageControl.isEnabled = false
-                self.pageControl.isHidden = true
-            })
         }
+//        } else {
+//            UIView.animate(withDuration: 0.6, animations: {
+//                self.pageControl.isEnabled = false
+//                self.pageControl.isHidden = true
+//            })
+//        }
         
 //        if viewControllerIndex != 1 {
 //            print("Noooooooo")

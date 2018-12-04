@@ -23,7 +23,7 @@ class NowPlayingViewController: UIViewController {
     var cellHeight: CGFloat! = 40//40
     var cardHeight: CGFloat = 100 + 40 * 6 + 7 * 30
     
-    let cardHandleAreaHeight:CGFloat = 52
+    let cardHandleAreaHeight: CGFloat = 56
     
     var cardVisible = false
     var nextState:CardState {
