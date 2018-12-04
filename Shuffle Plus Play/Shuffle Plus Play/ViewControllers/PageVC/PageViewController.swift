@@ -55,7 +55,7 @@ class PageViewController: UIPageViewController, UIPageViewControllerDataSource, 
         self.pageControl.widthAnchor.constraint(equalTo: self.view.widthAnchor, constant: -20).isActive = true
         self.pageControl.heightAnchor.constraint(equalToConstant: 20).isActive = true
         self.pageControl.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        pageControlBottomConstraint = NSLayoutConstraint(item: self.view, attribute: .top, relatedBy: .equal, toItem: pageControl, attribute: .top, multiplier: 1, constant: -20)
+        pageControlBottomConstraint = NSLayoutConstraint(item: self.view, attribute: .top, relatedBy: .equal, toItem: pageControl, attribute: .top, multiplier: 1, constant: -30)
         pageControlBottomConstraint.isActive = true
         
     }
