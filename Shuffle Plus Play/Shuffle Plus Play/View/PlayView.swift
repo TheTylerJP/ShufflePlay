@@ -104,9 +104,9 @@ import UIKit
             isPlaying = false
             
             
-            DispatchQueue.main.async {
+//            DispatchQueue.main.async {
                 self.button.setImage(self.renderPlay(), for: .normal)
-            }
+//            }
             
             
             if let stopHandler = stopHandler {

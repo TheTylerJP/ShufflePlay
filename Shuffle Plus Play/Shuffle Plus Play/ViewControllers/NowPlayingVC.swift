@@ -46,6 +46,7 @@ class NowPlayingViewController: UIViewController {
         imageView.layer.masksToBounds = false
         imageView.layer.shadowRadius = 3.0
         imageView.layer.shadowOpacity = 1.0
+        imageView.layer.cornerRadius = 5
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -98,20 +99,32 @@ class NowPlayingViewController: UIViewController {
         return button
     }()
     
-    let playPauseButton: PlayView = {
-        let playView = PlayView()
-        //playView.fractionComplete = 1
-        playView.iconSize = 25
-        playView.lineWidth = 3
-        playView.translatesAutoresizingMaskIntoConstraints = false
-        
-        playView.layer.shadowColor = UIColor.black.cgColor
-        playView.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
-        playView.layer.masksToBounds = false
-        playView.layer.shadowRadius = 3.0
-        playView.layer.shadowOpacity = 1.0
-        
-        return playView
+//    let playPauseButton: PlayView = {
+//        let playView = PlayView()
+//        //playView.fractionComplete = 1
+//        playView.iconSize = 25
+//        playView.lineWidth = 3
+//        playView.translatesAutoresizingMaskIntoConstraints = false
+//
+//        playView.layer.shadowColor = UIColor.black.cgColor
+//        playView.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
+//        playView.layer.masksToBounds = false
+//        playView.layer.shadowRadius = 3.0
+//        playView.layer.shadowOpacity = 1.0
+//
+//        return playView
+//    }()
+    
+    //Play
+    let playPauseButton: UIButton = {
+        let button = UIButton.musicButton()
+        if let homeImage  = UIImage(named: "play-white") {
+            button.setImage(homeImage, for: .normal)
+            button.tintColor = UIColor.black
+        }
+        button.addTarget(self, action: #selector(playButtonTapped), for:.touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
     }()
     
     //Next
@@ -125,6 +138,19 @@ class NowPlayingViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
+    
+    //Pause
+    let pauseButton: UIButton = {
+        let button = UIButton.musicButton()
+        if let homeImage  = UIImage(named: "pause-white3") {
+            button.setImage(homeImage, for: .normal)
+            button.tintColor = UIColor.black
+        }
+        button.addTarget(self, action: #selector(pauseButtonTapped), for:.touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -162,17 +188,17 @@ class NowPlayingViewController: UIViewController {
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        playPauseButton.fractionComplete = 1
-        playPauseButton.button.isUserInteractionEnabled = false
-        playPauseButton.playHandler = { [weak self] in
-            self?.playButtonTapped()
-        }
-        playPauseButton.stopHandler = { [weak self] in
-            self?.pauseButtonTapped()
-        }
-        
-    }
+//    override func viewDidAppear(_ animated: Bool) {
+//        playPauseButton.fractionComplete = 1
+//        playPauseButton.button.isUserInteractionEnabled = false
+//        playPauseButton.playHandler = { [weak self] in
+//            self?.playButtonTapped()
+//        }
+//        playPauseButton.stopHandler = { [weak self] in
+//            self?.pauseButtonTapped()
+//        }
+//
+//    }
     
     func setupViews() {
         self.view.addSubview(albumImageView)
@@ -182,6 +208,7 @@ class NowPlayingViewController: UIViewController {
         self.view.addSubview(previousButton)
         self.view.addSubview(playPauseButton)
         self.view.addSubview(nextButton)
+        self.view.addSubview(pauseButton)
         
         logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         logoImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 125).isActive = true
@@ -203,20 +230,27 @@ class NowPlayingViewController: UIViewController {
         artistLabel.widthAnchor.constraint(equalToConstant: 225).isActive = true
         artistLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
         
+        //MARK: - Buttons
         playPauseButton.topAnchor.constraint(equalTo: albumImageView.bottomAnchor, constant: 150).isActive = true
         playPauseButton.widthAnchor.constraint(equalToConstant: 57).isActive = true
         playPauseButton.heightAnchor.constraint(equalToConstant: 57).isActive = true
-        playPauseButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+        playPauseButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 40).isActive = true
         
         previousButton.topAnchor.constraint(equalTo: albumImageView.bottomAnchor, constant: 150).isActive = true
         previousButton.widthAnchor.constraint(equalToConstant: 55).isActive = true
         previousButton.heightAnchor.constraint(equalToConstant: 55).isActive = true
-        previousButton.leftAnchor.constraint(equalTo: playPauseButton.leftAnchor, constant: -80).isActive = true
+        previousButton.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
         
         nextButton.topAnchor.constraint(equalTo: albumImageView.bottomAnchor, constant: 150).isActive = true
         nextButton.widthAnchor.constraint(equalToConstant: 55).isActive = true
         nextButton.heightAnchor.constraint(equalToConstant: 55).isActive = true
-        nextButton.rightAnchor.constraint(equalTo: playPauseButton.rightAnchor, constant: 80).isActive = true
+        nextButton.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
+        
+        pauseButton.topAnchor.constraint(equalTo: albumImageView.bottomAnchor, constant: 150).isActive = true
+        pauseButton.widthAnchor.constraint(equalToConstant: 55).isActive = true
+        pauseButton.heightAnchor.constraint(equalToConstant: 55).isActive = true
+        pauseButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: -40).isActive = true
+        
     }
     
 }
@@ -224,7 +258,7 @@ class NowPlayingViewController: UIViewController {
 //MARK: - Play / Pause / Prev / Next Buttons
 extension NowPlayingViewController {
     
-    @objc func playButtonTapped() {
+    @objc func playButtonTapped(_ sender: UIButton) {
         
         let name = Notification.Name.albumArtNotifacationKey
         NotificationCenter.default.post(name: name, object: nil)
@@ -238,10 +272,11 @@ extension NowPlayingViewController {
         setNowPlayingInfo()
         musicPlayer.shuffleMode = .songs
         createObservers()
+        sender.pulsate()
         musicPlayer.play()
     }
     
-    @objc func pauseButtonTapped() {
+    @objc func pauseButtonTapped(_ sender: UIButton) {
         let albumArt = Notification.Name.albumArtNotifacationKey
         NotificationCenter.default.post(name: albumArt, object: nil)
         
@@ -252,6 +287,7 @@ extension NowPlayingViewController {
         NotificationCenter.default.post(name: trackName, object: nil)
         
         setNowPlayingInfo()
+        sender.pulsate()
         musicPlayer.pause()
     }
     
@@ -468,6 +504,7 @@ extension NowPlayingViewController {
                     //self.visualEffectView.effect = UIBlurEffect(style: .dark)
                 case .collapsed:
                     //self.visualEffectView.effect = nil
+                    self.setNowPlayingInfo()
                     print("")
                 }
             }
