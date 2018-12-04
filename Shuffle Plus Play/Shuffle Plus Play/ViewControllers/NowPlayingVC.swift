@@ -36,7 +36,8 @@ class NowPlayingViewController: UIViewController {
     
     var musicPlayer = MPMusicPlayerController.applicationMusicPlayer
     let myMediaQuery = MPMediaQuery.songs()
-    let nowPlaying = MPNowPlayingInfoCenter.default().nowPlayingInfo
+    //var applicationQueuePlayer: MPMusicPlayerApplicationController
+    //let nowPlaying = MPNowPlayingInfoCenter.default().nowPlayingInfo
     
     //Album Image View
     var albumImageView: UIImageView = {
@@ -172,6 +173,8 @@ class NowPlayingViewController: UIViewController {
         
         self.view.backgroundColor = .red
         self.view.backgroundColor = UIColor(r: 70, g: 136, b: 241, a: 1)
+        
+        //applicationQueuePlayer = MPMusicPlayerController.applicationQueuePlayer
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -292,49 +295,65 @@ extension NowPlayingViewController {
     }
     
     @objc func previousButtonTapped(_ sender: UIButton) {
-        let name = Notification.Name.albumArtNotifacationKey
-        NotificationCenter.default.post(name: name, object: nil)
+        DispatchQueue.main.async {
+            
+            self.musicPlayer.skipToPreviousItem()
+            
+            let name = Notification.Name.albumArtNotifacationKey
+            NotificationCenter.default.post(name: name, object: nil)
+            
+            let artistName = Notification.Name.artistNotifacationKey
+            NotificationCenter.default.post(name: artistName, object: nil)
+            
+            let trackName = Notification.Name.trackTitleNotifactionKey
+            NotificationCenter.default.post(name: trackName, object: nil)
         
-        let artistName = Notification.Name.artistNotifacationKey
-        NotificationCenter.default.post(name: artistName, object: nil)
+            self.setNowPlayingInfo()
+            sender.pulsate()
+        }
         
-        let trackName = Notification.Name.trackTitleNotifactionKey
-        NotificationCenter.default.post(name: trackName, object: nil)
-        
-        setNowPlayingInfo()
-        musicPlayer.skipToPreviousItem()
-        sender.pulsate()
     }
     
     @objc func nextButtonTapped(_ sender: UIButton) {
+        
+        DispatchQueue.main.async {
+            self.musicPlayer.skipToNextItem()
         //Keys for Observers
-        let name = Notification.Name.albumArtNotifacationKey
-        NotificationCenter.default.post(name: name, object: nil)
-        
-        let artistName = Notification.Name.artistNotifacationKey
-        NotificationCenter.default.post(name: artistName, object: nil)
-        
-        let trackName = Notification.Name.trackTitleNotifactionKey
-        NotificationCenter.default.post(name: trackName, object: nil)
-        
-        setNowPlayingInfo()
-        musicPlayer.skipToNextItem()
-        sender.pulsate()
+            let name = Notification.Name.albumArtNotifacationKey
+            NotificationCenter.default.post(name: name, object: nil)
+            
+            let artistName = Notification.Name.artistNotifacationKey
+            NotificationCenter.default.post(name: artistName, object: nil)
+            
+            let trackName = Notification.Name.trackTitleNotifactionKey
+            NotificationCenter.default.post(name: trackName, object: nil)
+            
+            self.setNowPlayingInfo()
+            
+            sender.pulsate()
+        }
     }
     
     func setNowPlayingInfo() {
         
         if musicPlayer.playbackState == .playing {
-            albumImageView.image = musicPlayer.nowPlayingItem?.artwork?.image(at: albumImageView.bounds.size)
-            nowPlayingLabel.text = musicPlayer.nowPlayingItem?.title
-            artistLabel.text = musicPlayer.nowPlayingItem?.artist
-            
-            albumImageView.isHidden = false
-            nowPlayingLabel.isHidden = false
-            artistLabel.isHidden = false
-            logoImageView.isHidden = true
+            DispatchQueue.main.async {
+                self.albumImageView.image = self.musicPlayer.nowPlayingItem?.artwork?.image(at: self.albumImageView.bounds.size)
+                self.nowPlayingLabel.text = self.musicPlayer.nowPlayingItem?.title
+                self.artistLabel.text = self.musicPlayer.nowPlayingItem?.artist
+                
+                self.albumImageView.isHidden = false
+                self.nowPlayingLabel.isHidden = false
+                self.artistLabel.isHidden = false
+                self.logoImageView.isHidden = true
+            }
+        } else {
+            DispatchQueue.main.async {
+                self.albumImageView.image = self.musicPlayer.nowPlayingItem?.artwork?.image(at: self.albumImageView.bounds.size)
+                self.nowPlayingLabel.text = self.musicPlayer.nowPlayingItem?.title
+                self.artistLabel.text = self.musicPlayer.nowPlayingItem?.artist
+            }
         }
-        
     }
     
     @objc func updateAlbumArt(notifacation: NSNotification) {
@@ -347,6 +366,10 @@ extension NowPlayingViewController {
     
     @objc func updateTrackTitle(notifaction: NSNotification) {
         nowPlayingLabel.text = musicPlayer.nowPlayingItem?.title
+    }
+    
+    @objc func nowPlayingItemDidChange() {
+        setNowPlayingInfo()
     }
     
     func createObservers() {
@@ -363,6 +386,9 @@ extension NowPlayingViewController {
         //GenreButtonTapped
         NotificationCenter.default.addObserver(self, selector: #selector(genreButtonTapped(_:)), name: Notification.Name.genreButtonTapped, object: nil)
         
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(nowPlayingItemDidChange), name: NSNotification.Name.MPMusicPlayerControllerNowPlayingItemDidChange, object: nil)
+        //NotificationCenter.default.addObserver(self, selector: #selector(nowPlayingItemDidChange()), name: NSNotification.Name.MPMusicPlayerControllerNowPlayingItemDidChange, object: nil)
     }
     
     @objc func genreButtonTapped(_ notification: Notification) {

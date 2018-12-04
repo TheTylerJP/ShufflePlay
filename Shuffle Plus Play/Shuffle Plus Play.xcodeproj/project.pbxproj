@@ -364,7 +364,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = L4H9LZ77XG;
+				DEVELOPMENT_TEAM = 2BRLV2FEPT;
 				INFOPLIST_FILE = "Shuffle Plus Play/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -382,7 +382,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = L4H9LZ77XG;
+				DEVELOPMENT_TEAM = 2BRLV2FEPT;
 				INFOPLIST_FILE = "Shuffle Plus Play/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
