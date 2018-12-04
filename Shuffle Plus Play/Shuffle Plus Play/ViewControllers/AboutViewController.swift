@@ -82,7 +82,8 @@ class AboutViewController: UIViewController {
         super.viewDidLoad()
         
         //view.backgroundColor = UIColor(red: 137/255, green: 217/255, blue: 255/255, alpha: 1)
-        view.backgroundColor = .white
+//        view.backgroundColor = .white
+        self.view.backgroundColor = UIColor(r: 70, g: 136, b: 241, a: 1)
         
         
         //setupLayout

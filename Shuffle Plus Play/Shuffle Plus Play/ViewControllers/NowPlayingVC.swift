@@ -234,7 +234,7 @@ class NowPlayingViewController: UIViewController {
         playPauseButton.topAnchor.constraint(equalTo: albumImageView.bottomAnchor, constant: 150).isActive = true
         playPauseButton.widthAnchor.constraint(equalToConstant: 57).isActive = true
         playPauseButton.heightAnchor.constraint(equalToConstant: 57).isActive = true
-        playPauseButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 40).isActive = true
+        playPauseButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 50).isActive = true
         
         previousButton.topAnchor.constraint(equalTo: albumImageView.bottomAnchor, constant: 150).isActive = true
         previousButton.widthAnchor.constraint(equalToConstant: 55).isActive = true
@@ -249,7 +249,7 @@ class NowPlayingViewController: UIViewController {
         pauseButton.topAnchor.constraint(equalTo: albumImageView.bottomAnchor, constant: 150).isActive = true
         pauseButton.widthAnchor.constraint(equalToConstant: 55).isActive = true
         pauseButton.heightAnchor.constraint(equalToConstant: 55).isActive = true
-        pauseButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: -40).isActive = true
+        pauseButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: -50).isActive = true
         
     }
     
