@@ -96,7 +96,8 @@ class AboutViewController: UIViewController {
         
         setupLayout()
         
-        
+        let parentVc = self.parent as! PageViewController
+        parentVc.pageControl.currentPage = 0
         // Do any additional setup after loading the view.
     }
     

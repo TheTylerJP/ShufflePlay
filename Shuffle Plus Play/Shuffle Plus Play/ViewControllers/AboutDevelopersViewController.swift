@@ -98,6 +98,8 @@ class AboutDevelopersViewController: UIViewController {
         setupLayout()
         
         // Do any additional setup after loading the view.
+        let parentVc = self.parent as! PageViewController
+        parentVc.pageControl.currentPage = 2
     }
     
     @objc func tylerTapped(_ sender: UIButton) {

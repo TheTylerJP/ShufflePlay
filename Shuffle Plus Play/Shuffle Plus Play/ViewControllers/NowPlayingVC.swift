@@ -175,6 +175,8 @@ class NowPlayingViewController: UIViewController {
         self.view.backgroundColor = UIColor(r: 70, g: 136, b: 241, a: 1)
         
         //applicationQueuePlayer = MPMusicPlayerController.applicationQueuePlayer
+        let parentVc = self.parent as! PageViewController
+        parentVc.pageControl.currentPage = 1
     }
     
     override func viewWillAppear(_ animated: Bool) {
