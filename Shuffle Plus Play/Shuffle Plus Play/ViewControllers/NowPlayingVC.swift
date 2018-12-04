@@ -279,6 +279,14 @@ extension NowPlayingViewController {
         createObservers()
         sender.pulsate()
         musicPlayer.play()
+        
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: 0.5) {
+                self.albumImageView.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+            }
+        }
+        
+        
     }
     
     @objc func pauseButtonTapped(_ sender: UIButton) {
@@ -294,6 +302,14 @@ extension NowPlayingViewController {
         setNowPlayingInfo()
         sender.pulsate()
         musicPlayer.pause()
+        
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: 0.5) {
+                self.albumImageView.transform = .identity
+            }
+        }
+        
+        
     }
     
     @objc func previousButtonTapped(_ sender: UIButton) {
@@ -395,19 +411,7 @@ extension NowPlayingViewController {
     
     @objc func genreButtonTapped(_ notification: Notification) {
         guard let genre = notification.userInfo?["genre"] as? String else { fatalError("Can't get the genre") }
-        print("")
-        print("")
-        print("")
-        print("")
-        print("")
-        print("")
-        print(genre)
-        print("")
-        print("")
-        print("")
-        print("")
-        print("")
-        print("")
+
         DispatchQueue.global().async {
             MPMediaLibrary.requestAuthorization { (status) in
                 if status == .authorized{
@@ -419,6 +423,14 @@ extension NowPlayingViewController {
         }
         
         setNowPlayingInfo()
+        
+        DispatchQueue.main.async {
+            self.animateTransitionIfNeeded(state: self.nextState, duration: 1.5)
+            UIView.animate(withDuration: 0.5) {
+                self.albumImageView.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+            }
+        }
+        
         
     }
     
