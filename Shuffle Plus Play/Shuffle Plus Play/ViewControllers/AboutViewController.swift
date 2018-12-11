@@ -26,7 +26,7 @@ class AboutViewController: UIViewController {
         textView.isUserInteractionEnabled = false
         
         textView.textColor = UIColor.black
-        
+        textView.font = UIFont.systemFont(ofSize: 34, weight: UIFont.Weight.thin)
         textView.text = "About Shuffle Play"
         textView.translatesAutoresizingMaskIntoConstraints = false
         return textView
@@ -81,13 +81,9 @@ class AboutViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //view.backgroundColor = UIColor(red: 137/255, green: 217/255, blue: 255/255, alpha: 1)
-//        view.backgroundColor = .white
         self.view.backgroundColor = UIColor(r: 70, g: 136, b: 241, a: 1)
         
-        
         //setupLayout
-        
         view.addSubview(aboutLabelTextView)
         view.addSubview(shuffleImageView)
         view.addSubview(aboutTextView)
@@ -106,7 +102,7 @@ class AboutViewController: UIViewController {
         aboutLabelTextView.topAnchor.constraint(equalTo: view.topAnchor, constant: 60).isActive = true
         aboutLabelTextView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         aboutLabelTextView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        aboutLabelTextView.widthAnchor.constraint(equalToConstant: 200).isActive = true
+        aboutLabelTextView.widthAnchor.constraint(equalToConstant: 225).isActive = true
         aboutLabelTextView.heightAnchor.constraint(equalToConstant: 30).isActive = true
         
         shuffleImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true

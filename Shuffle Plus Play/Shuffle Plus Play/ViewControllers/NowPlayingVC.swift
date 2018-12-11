@@ -36,6 +36,10 @@ class NowPlayingViewController: UIViewController {
     
     var musicPlayer = MPMusicPlayerController.applicationMusicPlayer
     let myMediaQuery = MPMediaQuery.songs()
+    var audioSession = AVAudioSession.sharedInstance()
+    
+    let nowPlaying = MPNowPlayingInfoCenter.default().nowPlayingInfo
+    
     //var applicationQueuePlayer: MPMusicPlayerApplicationController
     //let nowPlaying = MPNowPlayingInfoCenter.default().nowPlayingInfo
     
@@ -155,6 +159,16 @@ class NowPlayingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        
+//        self.becomeFirstResponder()
+//        UIApplication.shared.beginReceivingRemoteControlEvents()
+        
+//        try! self.audioSession.setCategory(AVAudioSession.Category.playback)
+        try! AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: [])
+        try! self.audioSession.setActive(true)
+        
+        UIApplication.shared.beginReceivingRemoteControlEvents()
+        self.becomeFirstResponder()
         
         cellHeight = self.view.frame.width * 0.375 / 3
         
@@ -167,6 +181,7 @@ class NowPlayingViewController: UIViewController {
         setupViews()
         setupCard()
         createObservers()
+        setupNowPlayingInfoCenter()
         
         self.genresCardViewController.view.layer.cornerRadius = 12
         self.genresCardViewController.view.clipsToBounds = true
@@ -205,6 +220,27 @@ class NowPlayingViewController: UIViewController {
 //
 //    }
     
+    private func setupNowPlayingInfoCenter() {
+        UIApplication.shared.beginReceivingRemoteControlEvents();
+        MPRemoteCommandCenter.shared().playCommand.addTarget {event in
+            self.musicPlayer.play()
+            self.setupNowPlayingInfoCenter()
+            return .success
+        }
+        MPRemoteCommandCenter.shared().pauseCommand.addTarget {event in
+            self.musicPlayer.pause()
+            return .success
+        }
+        MPRemoteCommandCenter.shared().nextTrackCommand.addTarget {event in
+            self.musicPlayer.skipToNextItem()
+            return .success
+        }
+        MPRemoteCommandCenter.shared().previousTrackCommand.addTarget {event in
+            self.musicPlayer.skipToPreviousItem()
+            return .success
+        }
+    }
+        
     func setupViews() {
         self.view.addSubview(albumImageView)
         self.view.addSubview(nowPlayingLabel)

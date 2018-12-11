@@ -12,6 +12,17 @@ import UIKit
 
 class AboutDevelopersViewController: UIViewController {
     
+    
+    let aboutLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .black
+        label.textAlignment = .center
+        label.font = UIFont.systemFont(ofSize: 34, weight: UIFont.Weight.thin)
+        label.text = "About the Developers"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     //MARK: Buttons
     let tylerImageButton: UIButton = {
         let button = UIButton()
@@ -94,6 +105,7 @@ class AboutDevelopersViewController: UIViewController {
         view.addSubview(thomImageButton)
         view.addSubview(tylerLabel)
         view.addSubview(thomLabel)
+        view.addSubview(aboutLabel)
         
         setupLayout()
         
@@ -154,6 +166,11 @@ class AboutDevelopersViewController: UIViewController {
     }
     
     private func setupLayout() {
+        
+        aboutLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        aboutLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 45).isActive = true
+        aboutLabel.heightAnchor.constraint(equalToConstant: 110).isActive = true
+        
         tylerImageButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         tylerImageButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 150).isActive = true
         tylerImageButton.widthAnchor.constraint(equalToConstant: 110).isActive = true
