@@ -98,23 +98,7 @@ class NowPlayingViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
-    
-//    let playPauseButton: PlayView = {
-//        let playView = PlayView()
-//        //playView.fractionComplete = 1
-//        playView.iconSize = 25
-//        playView.lineWidth = 3
-//        playView.translatesAutoresizingMaskIntoConstraints = false
-//
-//        playView.layer.shadowColor = UIColor.black.cgColor
-//        playView.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
-//        playView.layer.masksToBounds = false
-//        playView.layer.shadowRadius = 3.0
-//        playView.layer.shadowOpacity = 1.0
-//
-//        return playView
-//    }()
-    
+
     //Play
     let playPauseButton: UIButton = {
         let button = UIButton.musicButton()
@@ -198,19 +182,7 @@ class NowPlayingViewController: UIViewController {
             logoImageView.isHidden = true
         }
     }
-    
-//    override func viewDidAppear(_ animated: Bool) {
-//        playPauseButton.fractionComplete = 1
-//        playPauseButton.button.isUserInteractionEnabled = false
-//        playPauseButton.playHandler = { [weak self] in
-//            self?.playButtonTapped()
-//        }
-//        playPauseButton.stopHandler = { [weak self] in
-//            self?.pauseButtonTapped()
-//        }
-//
-//    }
-            
+
     func setupViews() {
         self.view.addSubview(albumImageView)
         self.view.addSubview(nowPlayingLabel)
