@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2407CB1321DEC98B0023520E /* CardViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2407CB1221DEC98B0023520E /* CardViewExtensions.swift */; };
+		2407CB1521DECA080023520E /* NowPlayingControlsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2407CB1421DECA080023520E /* NowPlayingControlsExtensions.swift */; };
 		DC023E3721B304EC00446EFE /* NotificationsNameExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC023E3621B304EC00446EFE /* NotificationsNameExtension.swift */; };
 		DC06A4C521B2E1EC009D2C21 /* UIButtonExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC06A4BD21B2E1EC009D2C21 /* UIButtonExtension.swift */; };
 		DC06A4CD21B2FDCD009D2C21 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DC06A4CC21B2FDCD009D2C21 /* Assets.xcassets */; };
@@ -16,7 +18,7 @@
 		DC0DEC712186070F003B5487 /* GenreButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0DEC6E2186070E003B5487 /* GenreButtonCell.swift */; };
 		DC0DEC722186070F003B5487 /* GenresCardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC0DEC6F2186070E003B5487 /* GenresCardViewController.xib */; };
 		DC0DEC732186070F003B5487 /* GenresCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0DEC702186070E003B5487 /* GenresCardViewController.swift */; };
-		DC0DEC7521860870003B5487 /* NowPlayingVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0DEC7421860870003B5487 /* NowPlayingVC.swift */; };
+		DC0DEC7521860870003B5487 /* NowPlayingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0DEC7421860870003B5487 /* NowPlayingViewController.swift */; };
 		DC0DEC7D21863506003B5487 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0DEC7C21863506003B5487 /* PageViewController.swift */; };
 		DC0DEC7F21863819003B5487 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0DEC7E21863819003B5487 /* AboutViewController.swift */; };
 		DC0DEC852187620B003B5487 /* AboutDevelopersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC0DEC842187620B003B5487 /* AboutDevelopersViewController.swift */; };
@@ -24,6 +26,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2407CB1221DEC98B0023520E /* CardViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardViewExtensions.swift; sourceTree = "<group>"; };
+		2407CB1421DECA080023520E /* NowPlayingControlsExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingControlsExtensions.swift; sourceTree = "<group>"; };
 		DC023E3621B304EC00446EFE /* NotificationsNameExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsNameExtension.swift; sourceTree = "<group>"; };
 		DC06A4BD21B2E1EC009D2C21 /* UIButtonExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButtonExtension.swift; sourceTree = "<group>"; };
 		DC06A4CC21B2FDCD009D2C21 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -35,7 +39,7 @@
 		DC0DEC6E2186070E003B5487 /* GenreButtonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenreButtonCell.swift; sourceTree = "<group>"; };
 		DC0DEC6F2186070E003B5487 /* GenresCardViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GenresCardViewController.xib; sourceTree = "<group>"; };
 		DC0DEC702186070E003B5487 /* GenresCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenresCardViewController.swift; sourceTree = "<group>"; };
-		DC0DEC7421860870003B5487 /* NowPlayingVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingVC.swift; sourceTree = "<group>"; };
+		DC0DEC7421860870003B5487 /* NowPlayingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingViewController.swift; sourceTree = "<group>"; };
 		DC0DEC7C21863506003B5487 /* PageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		DC0DEC7E21863819003B5487 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		DC0DEC842187620B003B5487 /* AboutDevelopersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutDevelopersViewController.swift; sourceTree = "<group>"; };
@@ -106,8 +110,9 @@
 			isa = PBXGroup;
 			children = (
 				DC0DEC7E21863819003B5487 /* AboutViewController.swift */,
-				DC0DEC7421860870003B5487 /* NowPlayingVC.swift */,
+				DC0DEC7421860870003B5487 /* NowPlayingViewController.swift */,
 				DC0DEC842187620B003B5487 /* AboutDevelopersViewController.swift */,
+				2407CB1421DECA080023520E /* NowPlayingControlsExtensions.swift */,
 				DC0DEC82218638D3003B5487 /* CardView */,
 				DC0DEC80218638B2003B5487 /* PageVC */,
 			);
@@ -118,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				DC0DEC702186070E003B5487 /* GenresCardViewController.swift */,
+				2407CB1221DEC98B0023520E /* CardViewExtensions.swift */,
 			);
 			path = CardView;
 			sourceTree = "<group>";
@@ -209,15 +215,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC0DEC712186070F003B5487 /* GenreButtonCell.swift in Sources */,
+				2407CB1521DECA080023520E /* NowPlayingControlsExtensions.swift in Sources */,
 				DC0DEC852187620B003B5487 /* AboutDevelopersViewController.swift in Sources */,
 				DC0DEC732186070F003B5487 /* GenresCardViewController.swift in Sources */,
-				DC0DEC7521860870003B5487 /* NowPlayingVC.swift in Sources */,
+				DC0DEC7521860870003B5487 /* NowPlayingViewController.swift in Sources */,
 				DC0DEC7F21863819003B5487 /* AboutViewController.swift in Sources */,
 				DC06A4C521B2E1EC009D2C21 /* UIButtonExtension.swift in Sources */,
 				DC0DEC5D218606F4003B5487 /* AppDelegate.swift in Sources */,
 				DC023E3721B304EC00446EFE /* NotificationsNameExtension.swift in Sources */,
 				DCB3AC6F21B462DD00CD2CF1 /* PlayView.swift in Sources */,
 				DC0DEC7D21863506003B5487 /* PageViewController.swift in Sources */,
+				2407CB1321DEC98B0023520E /* CardViewExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

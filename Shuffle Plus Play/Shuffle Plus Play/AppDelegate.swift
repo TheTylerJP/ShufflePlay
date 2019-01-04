@@ -35,6 +35,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         return true
     }
+    
+    func setupAudioSession(){
+        do {
+//            try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback, with: [])
+            self.becomeFirstResponder()
+            
+            do {
+                try AVAudioSession.sharedInstance().setActive(true)
+                print("AVAudioSession is Active")
+            } catch let error as NSError {
+                print(error.localizedDescription)
+                
+            }
+        } catch let error as NSError {
+            print(error.localizedDescription)
+        }
+    }
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
